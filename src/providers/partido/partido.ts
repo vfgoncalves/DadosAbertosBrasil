@@ -20,4 +20,18 @@ export class PartidoProvider extends AncestralProvider {
     return this.http.get(this.ROTA_BASE + this.TODOS_PARTIDOS_END_POINT);
   }
 
+  get(id: string): Observable<any>{
+    return this.http.get(this.ROTA_BASE + this.PARTIDO_END_POINT.replace("{id}",id));
+  }
+
+  getMembros(urlMembros: string, legislatura: string, sigla: string): Observable<any>{
+    return this.http.get(urlMembros, {
+      params: {
+        idLegislatura: legislatura,
+        siglaPartido: sigla,
+        itens: '1000'
+      },
+      observe: 'response'})
+  }
+
 }

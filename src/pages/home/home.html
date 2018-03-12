@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card *ngFor="let partido of partidos" >
+  <ion-card *ngFor="let partido of partidos" (click)="infoPartido(partido)" >
     <ion-card-header>
       {{partido.sigla}}
     </ion-card-header>

@@ -1,3 +1,4 @@
+import { InfopartidoPage } from './../infopartido/infopartido';
 import { PartidoProvider } from './../../providers/partido/partido';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
@@ -19,8 +20,12 @@ export class HomePage {
 
   ionViewDidLoad() {
     this.partidoService.getAll().subscribe(r=>{
-      this.partidos = r["dados"];      
+      this.partidos = r["dados"];
     })
+  }
+
+  infoPartido(partido: Partido){
+    this.navCtrl.push(InfopartidoPage, {"partido": partido});
   }
 
 }

@@ -8,21 +8,24 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { PartidoProvider } from '../providers/partido/partido';
+import { InfopartidoPage } from '../pages/infopartido/infopartido';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    InfopartidoPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpClientModule
+    HttpClientModule    
   ],
   bootstrap: [IonicApp],
-  entryComponents: [
+  entryComponents: [ 
     MyApp,
-    HomePage
+    HomePage,
+    InfopartidoPage
   ],
   providers: [
     StatusBar,
