@@ -1,3 +1,4 @@
+import { OrgaosPage } from './../pages/orgaos/orgaos';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -16,7 +17,8 @@ import { InfomembroPage } from '../pages/infomembro/infomembro';
     MyApp,
     HomePage,
     InfopartidoPage,
-    InfomembroPage
+    InfomembroPage,
+    OrgaosPage
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,8 @@ import { InfomembroPage } from '../pages/infomembro/infomembro';
     MyApp,
     HomePage,
     InfopartidoPage,
-    InfomembroPage
+    InfomembroPage,
+    OrgaosPage
   ],
   providers: [
     StatusBar,

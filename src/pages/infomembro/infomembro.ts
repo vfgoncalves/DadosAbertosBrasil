@@ -1,10 +1,11 @@
+import { OrgaosPage } from './../orgaos/orgaos';
 import { GabineteMembro } from './../../models/gabineremembro';
 import { StatusMembro } from './../../models/statusmembro';
 import { PartidoProvider } from './../../providers/partido/partido';
 import { DetalheMembro } from './../../models/detalhemembro';
 import { MembroPartido } from './../../models/membroPartido';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, Loading, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, Loading, AlertController, ActionSheetController } from 'ionic-angular';
 import { ProjetoInfo } from '../../models/projetoInfo';
 
 /**
@@ -33,7 +34,8 @@ export class InfomembroPage {
     public navParams: NavParams,
     public partidoService: PartidoProvider,
     public loadingCtrl: LoadingController,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    public actionSheetCtrl: ActionSheetController
   ) {
     this.configuracaoInicial();
   }
@@ -82,5 +84,31 @@ export class InfomembroPage {
       message: message,
       buttons: ['Ok']
     }).present();
+  }
+
+  presentActionSheet() {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Mais Consultas',
+      buttons: [
+        {
+          text: 'Orgãos Relacionados ao Político',
+          handler: () => {
+            this.consultarOrgaos();
+          }
+        },{
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+          }
+        }
+      ]
+    });
+    actionSheet.present();
+  }
+
+  consultarOrgaos(){
+    //this.ultimoStatus.id
+    this.navCtrl.push(OrgaosPage, {"id": this.ultimoStatus.id,"titulo": this.titulo});
+    
   }
 }
