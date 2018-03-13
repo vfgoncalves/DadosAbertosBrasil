@@ -1,3 +1,4 @@
+import { InfomembroPage } from './../infomembro/infomembro';
 import { MembroPartido } from './../../models/membroPartido';
 import { DetalhePartido } from './../../models/detalhepartido';
 import { Partido } from './../../models/partido';
@@ -44,8 +45,11 @@ export class InfopartidoPage {
   buscarMembros(url:string, legislatura: string, sigla: string){
     this.partidoService.getMembros(url, legislatura, sigla).subscribe(r => {      
       this.membrosPartido = r["body"]["dados"];
-      console.log(this.membrosPartido);
     })
+  }
+
+  infoMembro(membro: MembroPartido){
+    this.navCtrl.push(InfomembroPage, {"membro": membro})
   }
 
 }

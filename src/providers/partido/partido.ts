@@ -34,4 +34,8 @@ export class PartidoProvider extends AncestralProvider {
       observe: 'response'})
   }
 
+  getByUrl(uri: string): Observable<any>{
+    return this.http.get(uri);
+  }
+
 }

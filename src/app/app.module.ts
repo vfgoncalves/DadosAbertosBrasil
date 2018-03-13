@@ -1,4 +1,4 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -9,12 +9,14 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { PartidoProvider } from '../providers/partido/partido';
 import { InfopartidoPage } from '../pages/infopartido/infopartido';
+import { InfomembroPage } from '../pages/infomembro/infomembro';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    InfopartidoPage
+    InfopartidoPage,
+    InfomembroPage
   ],
   imports: [
     BrowserModule,
@@ -25,7 +27,8 @@ import { InfopartidoPage } from '../pages/infopartido/infopartido';
   entryComponents: [ 
     MyApp,
     HomePage,
-    InfopartidoPage
+    InfopartidoPage,
+    InfomembroPage
   ],
   providers: [
     StatusBar,
