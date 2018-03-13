@@ -48,8 +48,8 @@ export class InfopartidoPage {
     })
   }
 
-  infoMembro(membro: MembroPartido){
-    this.navCtrl.push(InfomembroPage, {"membro": membro})
+  infoMembro(membro){   
+    this.navCtrl.push(InfomembroPage, {"membro": membro, "id": membro.id})
   }
 
 }

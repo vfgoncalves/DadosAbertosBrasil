@@ -1,4 +1,5 @@
 export class MembroPartido{
+    id: string = null;
     uri: string = null;
     nome: string = null;
     siglaPartido: string = null;

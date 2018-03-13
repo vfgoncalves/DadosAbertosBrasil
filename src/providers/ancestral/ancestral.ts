@@ -3,6 +3,7 @@ export class AncestralProvider {
     public TODOS_PARTIDOS_END_POINT: string = "/partidos/?itens=100"
     public PARTIDO_END_POINT: string = "/partidos/{id}"
     public DEPUTADO_END_POINT: string = "/deputado/{id}"
+    public PROJETOS_END_POINT: string = "/proposicoes"
 
     constructor(){
 

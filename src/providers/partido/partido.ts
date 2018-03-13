@@ -38,4 +38,13 @@ export class PartidoProvider extends AncestralProvider {
     return this.http.get(uri);
   }
 
+  getProjetos(idDeputado: string): Observable<any>{
+    return this.http.get(this.ROTA_BASE + this.PROJETOS_END_POINT, {
+        params: {
+          idAutor: idDeputado,
+          itens: '1000'
+        },
+        observe: 'response'})
+    }
+
 }

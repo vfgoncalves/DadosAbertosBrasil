@@ -52,7 +52,7 @@
       <p item-end>{{ultimoStatus.situacao}} </p>
     </ion-item>
   </ion-list>
-  
+
   <h4>Informações de Contato do Gabinete</h4>
 
   <!-- INFORMAÇÕES DE CONTATO -->
@@ -74,13 +74,23 @@
       <p item-end>{{gabinete.sala}} </p>
     </ion-item>
   </ion-list>
-  <!-- <ion-card *ngFor="let membro of membrosPartido " (click)="infoMembro(membro)">
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="{{membro.urlFoto}}">
-      </ion-avatar>
-      <h2>{{membro.nome}}</h2>
-      <p>{{membro.siglaUf}}</p>
-    </ion-item>
-  </ion-card> -->
+
+  <h4>Projetos</h4>
+  <ion-card *ngFor="let projeto of projetos">
+    <ion-card-header>
+      <b>Número Projeto:</b> {{projeto.numero}}
+      <br/>
+      <b>Ano:</b> {{projeto.ano}}
+    </ion-card-header>
+    <ion-card-content>
+      <b>Ementa:</b>
+      <br/> {{projeto.ementa}}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="nPossuiProjeto">
+    <ion-card-content>
+      Este político não possui nenhum projeto.
+    </ion-card-content>
+  </ion-card>
 </ion-content>
