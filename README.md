@@ -1,7 +1,7 @@
 # DADOS ABERTOS BRASIL
 
 Projeto com intuito de mostrar dados sobre políticos brasileiros.
-03/2018 -> Informações apenas de deputados.
+* 03/2018 -> Informações apenas de deputados.
 
 ## Getting Started
 
