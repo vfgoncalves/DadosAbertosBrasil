@@ -14,20 +14,26 @@
 
 
 <ion-content padding>
-    <h4>Orgãos Relacionados a {{titulo}}</h4>
+  <h4>Orgãos Relacionados a {{titulo}}</h4>  
   <ion-card *ngFor="let orgao of orgaos">
     <ion-card-header>
       {{orgao.siglaOrgao}}
     </ion-card-header>
     <ion-card-content>
       <b>Nome Orgão:</b>
-      <br>
-      {{orgao.nomeOrgao}}
+      <br> {{orgao.nomeOrgao}}
       <br>
       <b>Papel:</b>{{orgao.nomePapel}}
       <br>
-      <b>Dt. Início:</b>{{orgao.dataInicio | date: 'dd/MM/yyyy'}}<b> Dt. Fim:</b>{{orgao.dataFim | date: 'dd/MM/yyyy'}}
+      <b>Dt. Início:</b>{{orgao.dataInicio | date: 'dd/MM/yyyy'}}
+      <b> Dt. Fim:</b>{{orgao.dataFim | date: 'dd/MM/yyyy'}}
       <br>
     </ion-card-content>
   </ion-card>
+
+  
+  
+  <ion-infinite-scroll *ngIf="possuiProximaPagina" (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content loadingText="Buscando mais orgãos relacionados..."></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

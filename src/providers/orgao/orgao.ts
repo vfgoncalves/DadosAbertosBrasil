@@ -19,9 +19,13 @@ export class OrgaoProvider extends AncestralProvider {
   get(idDeputado: string): Observable<any> {
     return this.http.get(this.ROTA_BASE + this.ORGAOS_END_POINT.replace("{id}",idDeputado), {
       params: {
-        itens: '1000'
+        itens: '10'
       },
       observe: 'response'
     })
+  }
+
+  getByUrl(uri: string): Observable<any> {
+    return this.http.get(uri);
   }
 }

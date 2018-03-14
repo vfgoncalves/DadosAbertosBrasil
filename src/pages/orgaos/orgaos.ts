@@ -20,35 +20,66 @@ import { AncestralPage } from '../../ancestrais/page/ancestralPage';
 export class OrgaosPage extends AncestralPage {
   orgaos: OrgaoMembro[];
   titulo: string = "";
+  proximaPagina: string;
+  possuiProximaPagina: boolean = true;
 
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
     public partidoService: PartidoProvider,
     public orgaoService: OrgaoProvider
   ) {
-    super(loadingCtrl, alertCtrl);    
+    super(loadingCtrl, alertCtrl);
     this.buscarDados();
   }
 
-  buscarDados(){
+  buscarDados() {
     let idDeputado = this.navParams.get("id");
-    this.titulo = this.navParams.get("titulo");    
+    this.titulo = this.navParams.get("titulo");
     let loading: Loading = this.showLoading("Buscando orgãos relacionados...");
-    
-    this.orgaoService.get(idDeputado).subscribe(r=>{
+
+    this.orgaoService.get(idDeputado).subscribe(r => {
       this.orgaos = r["body"]["dados"];
-      console.log(this.orgaos);
-      
+      this.verificarProximaPagina(r["body"]["links"]);
       loading.dismiss();
-    }, err =>{
+    }, err => {
       this.tratarErro(loading, this.navCtrl);
     })
   }
 
-  ionViewDidLoad() {    
-  } 
+  verificarProximaPagina(links) {
+    for (let link of links) {
+      if (link["rel"] == "next") {
+        this.proximaPagina = link["href"];
+        this.possuiProximaPagina = true;
+        break;
+      } else {
+        this.proximaPagina = null;
+        this.possuiProximaPagina = false;
+      }
+    }
+  }
+
+  doInfinite(infiniteScroll) {
+    if (this.possuiProximaPagina){
+      this.orgaoService.getByUrl(this.proximaPagina).subscribe(r => {
+        console.log();
+        for (let orgao of r["dados"]) {
+          this.orgaos.push(orgao);
+          console.log(this.orgaos.length);          
+        }  
+        this.verificarProximaPagina(r["links"]);
+        infiniteScroll.complete();
+      })
+    }else{
+      infiniteScroll.complete();
+    }    
+  }
+
+
+  ionViewDidLoad() {
+  }
 
 }
