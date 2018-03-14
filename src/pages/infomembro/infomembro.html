@@ -76,7 +76,7 @@
   </ion-list>
 
   <h4>Projetos</h4>
-  <ion-card *ngFor="let projeto of projetos">
+  <ion-card *ngFor="let projeto of projetos" (click)="consultarProjeto(projeto)">
     <ion-card-header>
       <b>Número Projeto:</b> {{projeto.numero}}
       <br/>

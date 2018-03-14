@@ -1,3 +1,4 @@
+import { DetalheprojetoPage } from './../detalheprojeto/detalheprojeto';
 import { MembroProvider } from './../../providers/membro/membro';
 import { AncestralPage } from './../../ancestrais/page/ancestralPage';
 import { OrgaosPage } from './../orgaos/orgaos';
@@ -100,6 +101,10 @@ export class InfomembroPage extends AncestralPage {
     actionSheet.present();
   }
 
+  consultarProjeto(projeto: ProjetoInfo){
+    this.navCtrl.push(DetalheprojetoPage, {"projeto": projeto});    
+  }
+  
   consultarOrgaos(){
     this.navCtrl.push(OrgaosPage, {"id": this.ultimoStatus.id,"titulo": this.titulo});    
   }

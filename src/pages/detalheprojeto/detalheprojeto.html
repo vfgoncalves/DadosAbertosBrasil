@@ -1,0 +1,63 @@
+<!--
+  Generated template for the DetalheprojetoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Detalhe Projeto</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <h4>Dados Gerais</h4>
+  <b>Ementa:</b>
+  <br/> {{detalheProjeto.ementa}}
+  <br/>
+  <br/>
+  <b>Data de Apresentação:</b> {{detalheProjeto.dataApresentacao | date: 'dd/MM/yyyy'}}
+  <br/>
+  <br/>
+  <b>Tipo:</b> {{detalheProjeto.descricaoTipo}}
+  <br/>
+  <br/>
+  <b>Justificativa:</b> {{detalheProjeto.justificativa}}
+  <br/>
+  <br/>
+  <b>Palavras Chave:</b> {{detalheProjeto.keywords}}
+
+  <h4>Tramitações</h4>
+  <ion-card *ngFor="let t of tramitacoes">
+    <ion-card-header>
+      {{t.descricaoTramitacao}}
+    </ion-card-header>
+    <ion-card-content>
+      <b>Data:</b>
+      <br/> {{t.dataHora | date: 'dd/MM/yyyy'}}
+      <br/>
+      <b>Despacho:</b>
+      <br/> {{t.despacho}}
+      <br/>
+      <b>Regime:</b>
+      <br/> {{t.regime}}
+      <br/>
+      <b>Ordão Responsável:</b>
+      <br/> {{t.siglaOrgao}}
+      <br/>
+      <b>Clique para acessar a integra:</b>
+      <a href="{{t.url}}" target="_blank">Integra</a>
+      <br/>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-fab bottom right>
+    <button ion-fab mini (click)="scrollToTop()">
+      <ion-icon name="arrow-up"></ion-icon>
+    </button>
+  </ion-fab>
+
+</ion-content>

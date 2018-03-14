@@ -1,3 +1,4 @@
+import { DetalheprojetoPage } from './../pages/detalheprojeto/detalheprojeto';
 import { OrgaosPage } from './../pages/orgaos/orgaos';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
@@ -24,7 +25,8 @@ import { DespesaProvider } from '../providers/despesa/despesa';
     InfopartidoPage,
     InfomembroPage,
     OrgaosPage,
-    DespesasPage
+    DespesasPage,
+    DetalheprojetoPage
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,8 @@ import { DespesaProvider } from '../providers/despesa/despesa';
     InfopartidoPage,
     InfomembroPage,
     OrgaosPage,
-    DespesasPage
+    DespesasPage,
+    DetalheprojetoPage
   ],
   providers: [
     StatusBar,

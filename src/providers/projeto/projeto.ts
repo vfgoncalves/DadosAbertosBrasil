@@ -26,4 +26,17 @@ export class ProjetoProvider extends AncestralProvider {
     })
   }
 
+  getDetalhe(idProjeto: string): Observable<any> {
+    return this.http.get(this.ROTA_BASE + this.DETALHE_PROJETOS_END_POINT.replace("{id}", idProjeto))
+  }
+
+  getTramitacoes(idProjeto: string): Observable<any> {
+    return this.http.get(this.ROTA_BASE + this.TRAMITACAO_PROJETOS_END_POINT.replace("{id}", idProjeto),{
+      params: {
+        itens: '1000'
+      },
+      observe: 'response'
+    })
+  }
+
 }
