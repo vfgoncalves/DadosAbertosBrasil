@@ -9,6 +9,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, Loading, AlertController, ActionSheetController } from 'ionic-angular';
 import { ProjetoInfo } from '../../models/projetoInfo';
 import { ProjetoProvider } from '../../providers/projeto/projeto';
+import { DespesasPage } from '../despesas/despesas';
 
 /**
  * Generated class for the InfomembroPage page.
@@ -82,6 +83,12 @@ export class InfomembroPage extends AncestralPage {
           handler: () => {
             this.consultarOrgaos();
           }
+        },
+        {
+          text: 'Despesas do Político',
+          handler: () => {
+            this.consultarDespesas();
+          }
         },{
           text: 'Cancelar',
           role: 'cancel',
@@ -94,8 +101,10 @@ export class InfomembroPage extends AncestralPage {
   }
 
   consultarOrgaos(){
-    //this.ultimoStatus.id
-    this.navCtrl.push(OrgaosPage, {"id": this.ultimoStatus.id,"titulo": this.titulo});
-    
+    this.navCtrl.push(OrgaosPage, {"id": this.ultimoStatus.id,"titulo": this.titulo});    
+  }
+
+  consultarDespesas(){
+    this.navCtrl.push(DespesasPage, {"id": this.ultimoStatus.id,"titulo": this.titulo});    
   }
 }

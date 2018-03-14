@@ -14,6 +14,8 @@ import { InfomembroPage } from '../pages/infomembro/infomembro';
 import { MembroProvider } from '../providers/membro/membro';
 import { ProjetoProvider } from '../providers/projeto/projeto';
 import { OrgaoProvider } from '../providers/orgao/orgao';
+import { DespesasPage } from '../pages/despesas/despesas';
+import { DespesaProvider } from '../providers/despesa/despesa';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { OrgaoProvider } from '../providers/orgao/orgao';
     HomePage,
     InfopartidoPage,
     InfomembroPage,
-    OrgaosPage
+    OrgaosPage,
+    DespesasPage
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,8 @@ import { OrgaoProvider } from '../providers/orgao/orgao';
     HomePage,
     InfopartidoPage,
     InfomembroPage,
-    OrgaosPage
+    OrgaosPage,
+    DespesasPage
   ],
   providers: [
     StatusBar,
@@ -43,7 +47,8 @@ import { OrgaoProvider } from '../providers/orgao/orgao';
     PartidoProvider,
     MembroProvider,
     ProjetoProvider,
-    OrgaoProvider
+    OrgaoProvider,
+    DespesaProvider
   ]
 })
 export class AppModule {}

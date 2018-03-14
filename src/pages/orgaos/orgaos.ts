@@ -65,10 +65,8 @@ export class OrgaosPage extends AncestralPage {
   doInfinite(infiniteScroll) {
     if (this.possuiProximaPagina){
       this.orgaoService.getByUrl(this.proximaPagina).subscribe(r => {
-        console.log();
         for (let orgao of r["dados"]) {
           this.orgaos.push(orgao);
-          console.log(this.orgaos.length);          
         }  
         this.verificarProximaPagina(r["links"]);
         infiniteScroll.complete();

@@ -5,6 +5,7 @@ export class AncestralProvider {
     public DEPUTADO_END_POINT: string = "/deputados/{id}"
     public PROJETOS_END_POINT: string = "/proposicoes"
     public ORGAOS_END_POINT: string = "/deputados/{id}/orgaos"
+    public DESPESAS_END_POINT: string = "/deputados/{id}/despesas"
 
     constructor(){
 
