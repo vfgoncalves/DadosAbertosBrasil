@@ -11,6 +11,9 @@ import { HomePage } from '../pages/home/home';
 import { PartidoProvider } from '../providers/partido/partido';
 import { InfopartidoPage } from '../pages/infopartido/infopartido';
 import { InfomembroPage } from '../pages/infomembro/infomembro';
+import { MembroProvider } from '../providers/membro/membro';
+import { ProjetoProvider } from '../providers/projeto/projeto';
+import { OrgaoProvider } from '../providers/orgao/orgao';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,10 @@ import { InfomembroPage } from '../pages/infomembro/infomembro';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    PartidoProvider
+    PartidoProvider,
+    MembroProvider,
+    ProjetoProvider,
+    OrgaoProvider
   ]
 })
 export class AppModule {}

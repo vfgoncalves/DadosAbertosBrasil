@@ -1,3 +1,4 @@
+import { AncestralPage } from './../../ancestrais/page/ancestralPage';
 import { InfopartidoPage } from './../infopartido/infopartido';
 import { PartidoProvider } from './../../providers/partido/partido';
 import { Component } from '@angular/core';
@@ -8,7 +9,7 @@ import { Partido } from '../../models/partido';
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage {
+export class HomePage extends AncestralPage {
   partidos: Partido[];
 
   constructor(
@@ -17,7 +18,7 @@ export class HomePage {
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController
   ) {
-
+    super(loadingCtrl, alertCtrl);
   }
 
   ionViewDidLoad() {
@@ -34,20 +35,6 @@ export class HomePage {
 
   infoPartido(partido: Partido){
     this.navCtrl.push(InfopartidoPage, {"partido": partido});
-  }
-
-  private showLoading(mensagem: string): Loading {
-    let loading: Loading = this.loadingCtrl.create({
-      content: mensagem
-    });
-    loading.present();
-    return loading;
-  }
-  private showAlert(message: string): void {
-    this.alertCtrl.create({
-      message: message,
-      buttons: ['Ok']
-    }).present();
-  }
+  } 
 
 }
