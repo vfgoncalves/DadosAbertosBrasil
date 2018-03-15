@@ -20,17 +20,18 @@ import { PartidoProvider } from '../../providers/partido/partido';
   selector: 'page-infopartido',
   templateUrl: 'infopartido.html',
 })
-export class InfopartidoPage extends AncestralPage{
+export class InfopartidoPage extends AncestralPage {
   partido: Partido;
   lider: MembroPartido = new MembroPartido();
   status: DetalhePartido = new DetalhePartido();
   titulo: string = "Informações Partido"
   imageUrl: string;
   membrosPartido: MembroPartido[];
+  NpossuiMembro: boolean = false;
 
   constructor(
     public navCtrl: NavController,
-    public navParams: NavParams,    
+    public navParams: NavParams,
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
     public partidoService: PartidoProvider,
@@ -40,35 +41,42 @@ export class InfopartidoPage extends AncestralPage{
     this.buscarDados();
   }
 
-  buscarDados(){
+  buscarDados() {
     this.partido = this.navParams.get("partido");
     this.titulo = this.partido.sigla;
     let loading: Loading = this.showLoading("Buscando informações do partido...");
- 
-    this.partidoService.get(this.partido.id).subscribe(r => {      
-      this.partido = r["dados"];      
+
+    this.partidoService.get(this.partido.id).subscribe(r => {
+      this.partido = r["dados"];
       this.lider = this.partido.status.lider;
-      this.status = this.partido.status;     
+      this.status = this.partido.status;
       loading.dismiss();
-      this.buscarMembros(this.partido.status.uriMembros, this.partido.status.idLegislatura, this.partido.sigla);      
-    }, err=>{
+      this.buscarMembros(this.partido.status.uriMembros, this.partido.status.idLegislatura, this.partido.sigla);
+    }, err => {
       this.tratarErro(loading, this.navCtrl);
     })
   }
 
-  buscarMembros(url:string, legislatura: string, sigla: string){
-    let loading: Loading = this.showLoading("Buscando membros do partido...");
-    this.membroService.get(url, legislatura, sigla).subscribe(r => {            
-      loading.dismiss();
-      this.membrosPartido = r["body"]["dados"];
-    }, err=>{
-      loading.dismiss();
-      this.navCtrl.pop();
-      this.showAlert("Ocorreu um erro, tente novamente!");
-    })
+  buscarMembros(url: string, legislatura: string, sigla: string) {
+    console.log(url);
+    
+    if (url !== "") {
+      let loading: Loading = this.showLoading("Buscando membros do partido...");
+      this.membroService.get(url, legislatura, sigla).subscribe(r => {
+        loading.dismiss();
+        this.membrosPartido = r["body"]["dados"];
+      }, err => {
+        loading.dismiss();
+        this.navCtrl.pop();
+        this.showAlert("Ocorreu um erro, tente novamente!");
+      })
+    }else{
+      this.NpossuiMembro = true;
+    }
+
   }
 
-  infoMembro(membro){   
-    this.navCtrl.push(InfomembroPage, {"membro": membro, "id": membro.id})
+  infoMembro(membro) {
+    this.navCtrl.push(InfomembroPage, { "membro": membro, "id": membro.id })
   }
 }

@@ -39,7 +39,7 @@
   </ion-list>
 
   <!-- INFORMAÇÕES DO LIDER DO PARTIDO -->
-  <ion-card (click)="infoMembro(lider)">
+  <ion-card *ngIf="!NpossuiMembro" (click)="infoMembro(lider)">
     <ion-item>
       <ion-avatar item-start>
         <img src="{{lider.urlFoto}}">
@@ -54,6 +54,12 @@
   <h4>Membros do Partido</h4>
 
   <!-- INFORMAÇÕES DE MEMBROS DE PARTIDOS -->
+  <ion-card *ngIf="NpossuiMembro">
+    <ion-item>
+      <h2>Nenhum membro encontrado</h2>
+    </ion-item>
+  </ion-card>
+
   <ion-card *ngFor="let membro of membrosPartido " (click)="infoMembro(membro)">
     <ion-item>
       <ion-avatar item-start>
